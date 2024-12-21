@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fox Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Fox Image</h1>
+    <button id="fetchFox">Get a Random Fox</button>
+    <div id="imageContainer">
+        <img id="foxImage" src="" alt="Random Fox" style="display: none;">
+    </div>
+
+    <script>
+        document.getElementById("fetchFox").addEventListener("click", async () => {
+            const response = await fetch("https://randomfox.ca/floof/");
+            const data = await response.json();
+            const imgElement = document.getElementById("foxImage");
+            imgElement.src = data.image;
+            imgElement.style.display = "block";
+        });
+    </script>
+</body>
+</html>
